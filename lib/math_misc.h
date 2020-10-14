@@ -5,16 +5,26 @@
 
 /* --- STRUCTS --- */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 struct sci_value {
   double val;
   double pos_err;
   double neg_err;
+#ifdef __cplusplus
+  sci_value() {};
+
   sci_value (double _val, double _pos_err, double _neg_err) {
     val = _val;
     pos_err = _pos_err;
     neg_err = _neg_err;
   }
+#endif
 };
+#ifdef __cplusplus
+}
+#endif
 
 /* --- CONSTANTS --- */
 

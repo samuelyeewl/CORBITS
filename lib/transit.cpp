@@ -522,7 +522,7 @@ double prob_of_transits_approx_monte_carlo(const int n, planet_ellipse p[], int 
     return 1.0 * n_good / n_trials;
 }
 
-sci_value prob_of_transits_input_orbit(const int n, input_orbit io[]) {
+extern "C" sci_value prob_of_transits_input_orbit(const int n, input_orbit io[]) {
     planet_ellipse p[n];
     double prob, prob_up, prob_lo;
     int i = 0;
@@ -539,6 +539,17 @@ sci_value prob_of_transits_input_orbit(const int n, input_orbit io[]) {
     }
     prob_lo = prob_of_transits_approx(n, p);
     return sci_value(prob, prob_up - prob, prob - prob_lo);
+}
+
+extern "C" double prob_of_transits_input_orbit_noerr(const int n, input_orbit io[]) {
+    planet_ellipse p[n];
+    double prob;
+    int i = 0;
+    for (; i < n; i++) {
+	p[i] = convert(input_orbit_to_orbit(io[i]));
+    }
+    prob = prob_of_transits_approx(n, p);
+    return prob;
 }
 
 sci_value prob_of_transits_orbit(const int n, orbit o[]) {
