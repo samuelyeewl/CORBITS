@@ -1,3 +1,11 @@
+CORBITS.py
+==========
+A port of the CORBITS library to expose standard C hooks for use in Python. To
+use, run ``make lib``. The Python script only requires Numpy in addition to the
+standard library (uses ctypes to call library).
+
+Python port by Samuel Yee.
+
 CORBITS.jl
 ==========
 CORBITS is the Computed Occurrence of Revolving Bodies for the Investigation of Transiting Systems.
